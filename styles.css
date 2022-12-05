@@ -125,3 +125,13 @@ div#topDiv {
     margin-right: auto;
     width: 75vw;
 }
+
+@media (orientation: portrait) {
+	#helloDiv, #nameDiv {
+		font-size: 8vw;
+	}
+	#leftStuff, #rightStuff {
+		width: 10vw;
+		z-index:-1;
+	}	
+}
