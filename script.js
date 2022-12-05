@@ -152,7 +152,9 @@ function animateSvg() {
 		  return anime.random(25, 100)/100;
 		},
 		duration:1000,
-		//delay: 1000,
+		delay: function() {
+			return anime.random(0,250)
+		},
 		easing:'easeInOutElastic',
 		complete: function(anim) {
 			animateSvg()
@@ -161,7 +163,10 @@ function animateSvg() {
 	})
 }
 
+
+
 animateSvg()
+
 // [1,2,3].forEach(function(num) {
 	// wavyText(num)
 // })
