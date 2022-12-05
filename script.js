@@ -1,5 +1,5 @@
 var names = ['Kur0','jericjan','fcantil']
-var duration = 2000
+
 
 for (var name of names) {	
 	var parentDiv = $("<div></div>")
@@ -20,13 +20,18 @@ for (var name of names) {
 
 var namesCount = names.length
 
+var delay = 100
+var duration = 2000
+
 function wavyText(index) {
+var letterCount = names[index-1].length	
+// var animDuration = duration+(delay*(letterCount-2))
 anime({
   targets:`#nameDiv > div:nth-child(${index}) > h1`,
   translateY:[0,-20,20,0],
   opacity:[0,1,1,0],
   duration:duration,
-  delay: anime.stagger(100),
+  delay: anime.stagger(delay),
   easing:"easeInOutCubic",
   begin: function(anim) {
 	  console.log("starting")
@@ -39,13 +44,22 @@ anime({
 	  anim.animatables.forEach(function(letter) {
 	$(letter.target).css("display","none")
 	  })
-	  if (index == namesCount){
-		wavyText(1)
-	  }else{
-		wavyText(index+1)
-	  }
+	  // if (index == namesCount){
+		// wavyText(1)
+	  // }else{
+		// wavyText(index+1)
+	  // }
   }  
 })
+setTimeout(function() {
+	if (index == namesCount){
+		wavyText(1)
+	}else{
+		wavyText(index+1)
+	}
+}, duration)
+
+
 }
 wavyText(1)
 
@@ -76,6 +90,32 @@ $('.epicMap').click(function(){
 });
 
 
+function animateSvg() {
+	anime({
+		targets:'svg',
+		translateX:function(){
+			return anime.random(-100,100)
+		},
+		translateY:function() {
+			return anime.random(-100,100)
+		},
+		rotate:function() {
+			return anime.random(0,360)
+		},
+		scale:function() {
+		  return anime.random(25, 100)/100;
+		},
+		duration:1000,
+		//delay: 1000,
+		easing:'easeInOutElastic',
+		complete: function(anim) {
+			animateSvg()
+		}
+		
+	})
+}
+
+animateSvg()
 // [1,2,3].forEach(function(num) {
 	// wavyText(num)
 // })
