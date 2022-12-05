@@ -18,12 +18,9 @@ for (var name of names) {
 
 
 
-var namesCount = names.length
 
-var delay = 100
-var duration = 2000
 
-function wavyText(index) {
+/* function wavyText(index) {
 var letterCount = names[index-1].length	
 // var animDuration = duration+(delay*(letterCount-2))
 anime({
@@ -61,7 +58,44 @@ setTimeout(function() {
 
 
 }
-wavyText(1)
+wavyText(1) */
+
+var namesCount = names.length
+
+
+
+var nameTimeline = anime.timeline({
+  loop: true
+});
+
+var duration = 2000;
+var timestamps = [0, duration, duration*2, duration*3]
+
+timestamps.forEach(function(playAt, idx) {
+	if (idx == 3) {
+		nameTimeline.add({
+		duration:0,
+		complete: function(anim) {
+			nameTimeline.restart()
+		}
+		}, playAt)
+	} else {
+		nameTimeline.add({
+		targets:`#nameDiv > div:nth-child(${idx+1}) > h1`,
+		translateY:[0,-20,20,0],
+		opacity:[0,1,1,0],
+		duration:2000,
+		delay: anime.stagger(100),
+		easing:"easeInOutCubic",
+		begin: function(anim) {
+			console.log("starting")
+			anim.animatables.forEach(function(letter) {
+				$(letter.target).css("display","inline")
+			})
+		},			
+		}, playAt)	
+	}
+})
 
 var epicDivisorCount = 50
 for (var i=1;i<=epicDivisorCount; i++) {
