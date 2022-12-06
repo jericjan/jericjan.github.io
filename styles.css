@@ -136,6 +136,9 @@ div#topDiv {
 		width: 10vw;
 		z-index:-1;
 	}	
+	#wave > svg {
+		width:200vw;
+	}
 }
 
 #wave {
