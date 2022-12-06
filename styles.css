@@ -142,6 +142,9 @@ div#topDiv {
 	.grid {
 		grid-template-columns: 1fr 1fr!important;
 	}	
+	#socialsGrid > .item > div > a >img {
+		width: 7vw!important;
+	}	
 }
 
 #wave {
