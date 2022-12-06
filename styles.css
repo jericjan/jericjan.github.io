@@ -135,3 +135,12 @@ div#topDiv {
 		z-index:-1;
 	}	
 }
+
+#wave {
+    position: absolute;
+    height: 34vh;
+    width: 100vw;
+    z-index: 0;
+    top: 0;
+	mix-blend-mode:exclusion;
+}
