@@ -52,6 +52,8 @@ div#topDiv {
     flex-direction: column-reverse;
 }
 
+
+
 #epicDivisorParent {
     justify-content: center;
     align-items: center;
@@ -142,5 +144,20 @@ div#topDiv {
     width: 100vw;
     z-index: 0;
     top: 0;
+	mix-blend-mode:exclusion;
+}
+
+#tiles {
+	height: 34vh;
+	width: 100%;
+  position: absolute;
+
+  display: grid;
+  grid-template-columns: repeat(var(--columns), 1fr);
+  grid-template-rows: repeat(var(--rows), 1fr);
+}
+
+.tile {
+	background-color: white;
 	mix-blend-mode:exclusion;
 }
