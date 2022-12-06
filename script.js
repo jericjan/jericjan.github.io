@@ -67,6 +67,10 @@ var nameTimeline = anime.timeline({
   loop: false,
 complete: function(anim) {
 	console.log("other end")  
+			nameTimeline.restart()
+			nameTimeline.pause()
+			nameTimeline.seek(400)
+			nameTimeline.play()	
 }
 });
 
@@ -194,7 +198,7 @@ const wrapper = document.getElementById("tiles");
 
 let columns = 0,
     rows = 0,
-    toggled = false;
+    toggled = true;
 
 const toggle = () => {
   toggled = !toggled;
@@ -250,3 +254,99 @@ const createGrid = () => {
 createGrid();
 
 window.onresize = () => createGrid();
+
+var mySites = [
+	['Unus Annus Age Counter','ageCounter.png','https://jericjan.github.io/unus-annus-age-counter'],
+	['YT to MP3 w/ croppable album art','yt2Mp3.png','https://yt-to-mp3-with-croppable-album-art.netlify.app/'],
+	['Pomodoro but Better','pomo.png','https://pomodoro-but-better.netlify.app/'],
+	['Bad Apple But Browser Windows','bapple.webp','https://bad-apple-but-browser-windows.netlify.app/'],
+	['Fubuki Stereo Test','foob.png','https://fubuki-stereo-test.netlify.app/'],
+	['Tic Tac Shion!','shion.png','https://tic-tac-shion.netlify.app/']
+]
+
+mySites.reverse()
+
+mySites.forEach(function(site) {
+	let title = site[0]
+	let img = site[1]
+	let url = site[2]
+	let templateHTML = $("#itemTemplate").html()
+	let template = $(templateHTML).insertAfter('#itemTemplate')	
+	let imgElem = template.children("div").children('a').children('img')
+	imgElem.attr('src',`img/${img}`)
+	template.children("p").html(title)
+	imgElem.css('cursor','pointer')
+	template.children("div").children('a').attr("href",url)
+})
+
+fetch('https://api.github.com/repos/jericjan/jericjan.github.io/commits').then(a => a.json())
+.then(a => {
+	let date = new Date(a[0]['commit']['author']['date'])
+	options = {month: 'short', day: 'numeric', year:"numeric" };
+    $("#lastUpdated").html(date.toLocaleString("en-US", options))
+})
+
+var socialIconsSelector = "#socialsGrid > .item"
+$(socialIconsSelector).hover(function() {
+	let index = $(socialIconsSelector).index(this)
+	anime({
+		targets:socialIconsSelector,
+		translateY:[0,-20,0],
+		duration:600,
+		delay:anime.stagger(100, {
+			from: index	
+		}),
+		easing:"easeInOutCubic"
+		
+	})
+}, function() {})
+
+
+anime({
+    targets:"#twitter",
+    skewX:20,
+    direction:"alternate",
+    duration:500,
+    easing:'easeInElastic(1, .5)',
+	loop:true
+})
+
+function animGithub() {
+	anime({
+		targets:'#github',
+		rotate:function() {
+			return `+=${anime.random(10,360)}`
+		},
+		complete: function(anim) {
+			animGithub()
+		}
+	})
+}
+animGithub()
+
+function animDiscord() {
+	anime({
+		targets:'#discord',
+		scaleY: function() {
+			return anime.random(5,15)/10
+		},
+		complete: function(anim) {
+			animDiscord()
+		}
+	})	
+}
+animDiscord()
+
+function animYoutube() {
+	anime({
+		targets:'#youtube',
+		scaleX: function() {
+			return anime.random(-15,15)/10
+		},
+		complete: function(anim) {
+			animYoutube()
+		},
+		easing:'easeOutElastic(1, .5)'
+	})	
+}
+animYoutube()

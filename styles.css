@@ -137,8 +137,11 @@ div#topDiv {
 		z-index:-1;
 	}	
 	#wave > svg {
-		width:200vw;
+		width:300vw!important;
 	}
+	.grid {
+		grid-template-columns: 1fr 1fr!important;
+	}	
 }
 
 #wave {
@@ -148,6 +151,7 @@ div#topDiv {
     z-index: 0;
     top: 0;
 	mix-blend-mode:exclusion;
+	overflow: hidden;
 }
 
 #tiles {
@@ -163,4 +167,67 @@ div#topDiv {
 .tile {
 	background-color: white;
 	mix-blend-mode:exclusion;
+}
+
+.item {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.yesOverflow {
+	overflow: visible!important;
+}
+
+.border {
+    border: white 9px double;	
+    border-radius: 25px;	
+}
+
+.grid {
+    display: grid;
+    /* grid-column: 2; */
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    width: auto;
+    grid-gap: 16px;
+}
+
+.item > div > a > img {
+	width:100%
+}
+
+.item > div > a{
+	width:100%
+}
+
+.imgDiv {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.inline {
+	display:inline;
+}
+
+#socialsDiv {
+    display: flex;
+    justify-content: center;
+}
+
+#socialsGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 3vw;
+}
+
+#socialsGrid > .item > div > a >img {
+    width: 5vw;
+	height: auto;
+}
+
+#bodyStuff > h1 {
+	text-align:center;
+	margin-top:2em;
 }
