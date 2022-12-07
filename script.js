@@ -61,17 +61,15 @@ wavyText(1) */
 
 var namesCount = names.length
 
-
-
 var nameTimeline = anime.timeline({
-  loop: false,
-complete: function(anim) {
-	console.log("other end")  
-			nameTimeline.restart()
-			nameTimeline.pause()
-			nameTimeline.seek(400)
-			nameTimeline.play()	
-}
+	loop: false,
+	complete: function(anim) {
+		console.log("other end")  
+		nameTimeline.restart()
+		nameTimeline.pause()
+		nameTimeline.seek(400)
+		nameTimeline.play()	
+	}
 });
 
 var duration = 2000;
@@ -113,8 +111,8 @@ timestamps.forEach(function(startAt, idx) {
 
 var epicDivisorCount = 50
 for (var i=1;i<=epicDivisorCount; i++) {
-$("#epicDivisorParent").append($("<div class='epicDivisor'></div>"))
-$("#map").append($("<div class='epicMap'></div>"))
+	$("#epicDivisorParent").append($("<div class='epicDivisor'></div>"))
+	$("#map").append($("<div class='epicMap'></div>"))
 }
 
 // $('.epicMap').click(function(){
@@ -255,29 +253,58 @@ createGrid();
 
 window.onresize = () => createGrid();
 
-var mySites = [
+
+
+function addGridItems(parentSelector, sitesList) {
+	sitesList.forEach(function(site) {
+		let title = site[0]
+		let img = site[1]
+		let url = site[2]
+		let templateHTML = $($("#itemTemplate").html())
+		let template = $(parentSelector).append(templateHTML)	
+		let imgElem = templateHTML.children("div").children('a').children('img')
+		imgElem.attr('src',`img/${img}`)
+		templateHTML.children("p").html(title)
+		imgElem.css('cursor','pointer')
+		templateHTML.children("div").children('a').attr("href",url)				
+	})
+}
+
+addGridItems("#sitesGrid", [
 	['Unus Annus Age Counter','ageCounter.png','https://jericjan.github.io/unus-annus-age-counter'],
 	['YT to MP3 w/ croppable album art','yt2Mp3.png','https://yt-to-mp3-with-croppable-album-art.netlify.app/'],
 	['Pomodoro but Better','pomo.png','https://pomodoro-but-better.netlify.app/'],
 	['Bad Apple But Browser Windows','bapple.webp','https://bad-apple-but-browser-windows.netlify.app/'],
 	['Fubuki Stereo Test','foob.png','https://fubuki-stereo-test.netlify.app/'],
 	['Tic Tac Shion!','shion.png','https://tic-tac-shion.netlify.app/']
-]
+])
 
-mySites.reverse()
+addGridItems("#extensionsGrid", [
+	['Kur0\'s Tab Purger','pomo.png','https://github.com/jericjan/tab-purger ']
+])
 
-mySites.forEach(function(site) {
-	let title = site[0]
-	let img = site[1]
-	let url = site[2]
-	let templateHTML = $("#itemTemplate").html()
-	let template = $(templateHTML).insertAfter('#itemTemplate')	
-	let imgElem = template.children("div").children('a').children('img')
-	imgElem.attr('src',`img/${img}`)
-	template.children("p").html(title)
-	imgElem.css('cursor','pointer')
-	template.children("div").children('a').attr("href",url)
-})
+addGridItems("#BetterCordGrid", [
+	['Beeping DMs','pomo.png','https://github.com/jericjan/BeepingDMs'],
+	['Copy Discord Reactions','pomo.png','https://github.com/jericjan/CopyDiscordReactions']
+])
+
+addGridItems("#dBotGrid", [
+	['Kur0 sus bot','pomo.png','https://github.com/jericjan/Kur0bot']
+])
+
+addGridItems("#appsGrid", [
+	['Honkai CG Extractor','pomo.png','https://github.com/jericjan/honkai-cg-extractor'],
+	['File Sorter','pomo.png','https://github.com/jericjan/FileSorter'],
+	['After DL Shutdown','pomo.png','https://github.com/jericjan/after-dl-shutdown']
+])
+
+addGridItems("#userscriptsGrid", [
+	['ismyinternetworking.com (EVA edition)','pomo.png','https://greasyfork.org/en/scripts/431863-ismyinternetworking-com-eva-edition'],
+	['Honkai Anti-Entropy VN Scroll Fix','pomo.png','https://greasyfork.org/en/scripts/443106-anti-entropy-vn-scroll-fix']
+])
+	// userscripts
+		// https://greasyfork.org/en/scripts/431863-ismyinternetworking-com-eva-edition
+		// https://greasyfork.org/en/scripts/443106-anti-entropy-vn-scroll-fix
 
 fetch('https://api.github.com/repos/jericjan/jericjan.github.io/commits').then(a => a.json())
 .then(a => {
