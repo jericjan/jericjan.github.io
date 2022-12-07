@@ -139,9 +139,9 @@ div#topDiv {
 	#wave > svg {
 		width:300vw!important;
 	}
-	.grid {
-		grid-template-columns: 1fr 1fr!important;
-	}	
+	.item {
+		flex: 0 0 calc(50% - 20px)!important;
+	}
 	#socialsGrid > .item > div > a >img {
 		width: 7vw!important;
 	}	
@@ -176,7 +176,11 @@ div#topDiv {
     text-align: center;
     display: flex;
     flex-direction: column;
-    overflow: hidden;
+    flex: 0 0 calc(25% - 20px);
+    /* padding: 20px; */
+    margin: 10px;
+    box-sizing: border-box;
+	overflow: hidden;
 }
 
 .yesOverflow {
@@ -188,12 +192,24 @@ div#topDiv {
     border-radius: 25px;	
 }
 
+/* .grid { */
+    /* display: grid; */
+    /* ////grid-column: 2; */
+    /* grid-template-columns: 1fr 1fr 1fr 1fr; */
+    /* width: auto; */
+    /* grid-gap: 16px; */
+/* } */
+
+
 .grid {
-    display: grid;
-    /* grid-column: 2; */
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    width: auto;
-    grid-gap: 16px;
+    /* display: grid; */
+    /* ////grid-column: 2; */
+    /* grid-template-columns: 1fr 1fr 1fr 1fr; */
+    /* width: auto; */
+    /* grid-gap: 16px; */	
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .item > div > a > img {
