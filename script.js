@@ -302,9 +302,7 @@ addGridItems("#userscriptsGrid", [
 	['ismyinternetworking.com (EVA edition)','pomo.png','https://greasyfork.org/en/scripts/431863-ismyinternetworking-com-eva-edition'],
 	['Honkai Anti-Entropy VN Scroll Fix','pomo.png','https://greasyfork.org/en/scripts/443106-anti-entropy-vn-scroll-fix']
 ])
-	// userscripts
-		// https://greasyfork.org/en/scripts/431863-ismyinternetworking-com-eva-edition
-		// https://greasyfork.org/en/scripts/443106-anti-entropy-vn-scroll-fix
+
 
 fetch('https://api.github.com/repos/jericjan/jericjan.github.io/commits').then(a => a.json())
 .then(a => {
@@ -377,3 +375,31 @@ function animYoutube() {
 	})	
 }
 animYoutube()
+
+var itemWithBorder = '.item.border'
+$('.item.border > div > a').hover(function() {		
+	var parent = $(this).parent().parent()
+		anime({
+			targets: parent[0],
+			boxShadow:'0px 0px 0px #ffffffff',
+			duration:1000,
+			//direction:'alternate',
+			begin: function() {
+				parent.css("box-shadow","")
+			},
+			complete: function() {
+				parent.css("box-shadow","")
+			}
+		})
+
+}, function() {
+	// console.log("AAAAAAAAA")	
+	// anime({
+		// targets: $(this).parent().parent()[0],
+		// boxShadow:['white 0px 0px 20px','transparent -50px -50x 0px'],
+		// duration:1000,
+		// easing:"easeOutExpo"
+	// })
+})
+
+

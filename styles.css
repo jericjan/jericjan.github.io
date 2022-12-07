@@ -190,6 +190,7 @@ div#topDiv {
 .border {
     border: white 9px double;	
     border-radius: 25px;	
+	box-shadow: white 0px 0px 0px;
 }
 
 /* .grid { */
