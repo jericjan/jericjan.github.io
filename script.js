@@ -280,27 +280,27 @@ addGridItems("#sitesGrid", [
 ])
 
 addGridItems("#extensionsGrid", [
-	['Kur0\'s Tab Purger','pomo.png','https://github.com/jericjan/tab-purger ']
+	['Kur0\'s Tab Purger','tabPurger.png','https://github.com/jericjan/tab-purger ']
 ])
 
 addGridItems("#BetterCordGrid", [
-	['Beeping DMs','pomo.png','https://github.com/jericjan/BeepingDMs'],
-	['Copy Discord Reactions','pomo.png','https://github.com/jericjan/CopyDiscordReactions']
+	['Beeping DMs','beepingDMs.png','https://github.com/jericjan/BeepingDMs'],
+	['Copy Discord Reactions','copyReactions.png','https://github.com/jericjan/CopyDiscordReactions']
 ])
 
 addGridItems("#dBotGrid", [
-	['Kur0 sus bot','pomo.png','https://github.com/jericjan/Kur0bot']
+	['Kur0 sus bot','susBot.png','https://github.com/jericjan/Kur0bot']
 ])
 
 addGridItems("#appsGrid", [
-	['Honkai CG Extractor','pomo.png','https://github.com/jericjan/honkai-cg-extractor'],
-	['File Sorter','pomo.png','https://github.com/jericjan/FileSorter'],
-	['After DL Shutdown','pomo.png','https://github.com/jericjan/after-dl-shutdown']
+	['Honkai CG Extractor','CGExtractor.png','https://github.com/jericjan/honkai-cg-extractor'],
+	['File Sorter','fileSorter.png','https://github.com/jericjan/FileSorter'],
+	['After DL Shutdown','afterDL.png','https://github.com/jericjan/after-dl-shutdown']
 ])
 
 addGridItems("#userscriptsGrid", [
-	['ismyinternetworking.com (EVA edition)','pomo.png','https://greasyfork.org/en/scripts/431863-ismyinternetworking-com-eva-edition'],
-	['Honkai Anti-Entropy VN Scroll Fix','pomo.png','https://greasyfork.org/en/scripts/443106-anti-entropy-vn-scroll-fix']
+	['ismyinternetworking.com (EVA edition)','EVA.png','https://greasyfork.org/en/scripts/431863-ismyinternetworking-com-eva-edition'],
+	['Honkai Anti-Entropy VN Scroll Fix','honkai_AE_VN.jpg','https://greasyfork.org/en/scripts/443106-anti-entropy-vn-scroll-fix']
 ])
 
 
